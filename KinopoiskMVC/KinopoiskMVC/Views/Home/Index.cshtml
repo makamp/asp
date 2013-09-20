@@ -1,29 +1,110 @@
-﻿@model List<KinopoiskMVC.FilmsServiceReference.Film>
-
+﻿@using KinopoiskMVC.Helpers
+@model KinopoiskMVC.Models.ViewModels.FilterParams
 @{
     ViewBag.Title = "Index";
 }
 
+
+@*<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>*@
+	<script src="@Url.Content("~/Scripts/jquery-1.4.4.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Scripts/jQuery.tmpl.js")" type="text/javascript"></script>
+@*<script src="@Url.Content("~/Scripts/jquery-1.5.1-vsdoc.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-1.5.1.js")" type="text/javascript"></script>*@
+<script src="@Url.Content("~/Scripts/knockout-1.2.1.debug.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/knockout-mapping.js")" type="text/javascript"></script>
+
+
+
+
+    <script type="text/html" id="TableRow">
+            <tr>
+                <td data-bind="text: Title"></td>
+                <td data-bind="text: OriginalTitle"></td>
+                <td data-bind="text: Year"></td>
+            </tr>
+        </script>
+
+    
+<script type="text/html" id="FiltrationPanel">
+    Year from <input id="yearFrom" type="text" size="3" data-bind="value: YearFrom, valueUpdate: 'keyup'" /> 
+            to 
+              <input id="yearTo" type="text" size="3" data-bind="value: YearTo, valueUpdate: 'keyup'" />
+    <br />
+    <input type="text" size="3" data-bind="value: SearchString, valueUpdate: 'keyup'" />
+    
+    </script>
+
+
+<div data-bind="template: {
+	name: 'FiltrationPanel',
+	data: filterParams}">
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>
+					Title
+				</th>
+				<th>
+					Original Title
+				</th>
+				<th>
+					Year
+				</th>
+			</tr>
+		</thead>
+		<tbody data-bind="template: {
+			name: 'TableRow',
+			foreach: rows
+		}">
+		</tbody>
+	</table>
+
+	<script type="text/javascript">
+	var AjaxGridViewModel = function(url, filterParams) {
+
+	    this.rows= ko.observableArray();
+		this.filterParams = ko.mapping.fromJS(filterParams);
+		
+		ko.dependentObservable(function () {
+			var data = ko.toJS(this.filterParams);
+			$.ajax({
+				url: url,
+				type: 'POST',
+				data: data,
+				context: this,
+				success: function (data) {
+					this.rows(data.Data);
+				},
+			});
+		}, this);
+	};
+
+	var ajaxGrid = new AjaxGridViewModel('@Url.Action("FilterFilms")', @Html.ToJSON(Model));
+	ko.applyBindings(ajaxGrid);
+	</script>
+    
+
+
+
+
 @Html.ActionLink("Add Film", "AddFilm", "Home")
 
-<table>
-    @foreach (var film in Model)
-    {
-        <tr>
-            <td>
-                @film.Title
-            </td>
-            <td>
-                @film.OriginalTitile
-            </td>
-            <td>
-                @film.Year
-            </td>
-            
-            <td>
-                @Html.ActionLink("Edit", "EditFilm", new { id = film.FilmID }) |
-                @Html.ActionLink("Delete", "DeleteFilm", new { id = film.FilmID }) 
-            </td>
-        </tr>
-    }
-</table>
+@*@using(Ajax.BeginForm("myForm", ajaxOptions))
+{
+    <input id="submitBtn" type=submit value="Отобрать" />
+    
+    @Html.TextBox("QueryString")
+    
+   <table>
+        <thead>
+            <tr><td>Название</td><td>Оригинальное название</td><td>Год выхода</td></tr>
+        </thead>    
+        <tbody id="filmsList">
+            @Html.Action("GetFilms", new { genreId = ViewBag.GenreId })
+        </tbody>
+    </table>
+}
+<div id="loadingElemnet" style="display: none; color: red;"> Loading...</div>*@

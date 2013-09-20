@@ -1,0 +1,43 @@
+﻿Installing assembly 'D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.InstallLog
+   assemblypath = D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.exe
+Installing service FilmsService...
+Service FilmsService has been successfully installed.
+Creating EventLog source FilmsService in log Application...
+Committing assembly 'D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.InstallLog
+   assemblypath = D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.exe
+Uninstalling assembly 'D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.InstallLog
+   assemblypath = D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.exe
+Removing EventLog source FilmsService.
+Service FilmsService is being removed from the system...
+Service FilmsService was successfully removed from the system.
+Installing assembly 'D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.InstallLog
+   assemblypath = D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.exe
+Installing service FilmsService...
+Service FilmsService has been successfully installed.
+Creating EventLog source FilmsService in log Application...
+Committing assembly 'D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.InstallLog
+   assemblypath = D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.exe
+Uninstalling assembly 'D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.InstallLog
+   assemblypath = D:\asp1\asp\KinopoiskMVC\_bin\Debug.x86\WCFService.Host.exe
+Removing EventLog source FilmsService.
+Service FilmsService is being removed from the system...
+Service FilmsService was successfully removed from the system.
+Attempt to stop service FilmsService.

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:2903/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:2903/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:2903/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DAL" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService_SelectFilms_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectFilms" />
+  </wsdl:message>
+  <wsdl:message name="IService_SelectFilms_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectFilmsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddFilm_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddFilm" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddFilm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddFilmResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateFilm_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFilm" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateFilm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFilmResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteFilm_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFilm" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteFilm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFilmResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_SelectGenres_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectGenres" />
+  </wsdl:message>
+  <wsdl:message name="IService_SelectGenres_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectGenresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_SelectFilmsByGenreId_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectFilmsByGenreId" />
+  </wsdl:message>
+  <wsdl:message name="IService_SelectFilmsByGenreId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectFilmsByGenreIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService">
+    <wsdl:operation name="SelectFilms">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SelectFilms" message="tns:IService_SelectFilms_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/SelectFilmsResponse" message="tns:IService_SelectFilms_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFilm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddFilm" message="tns:IService_AddFilm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddFilmResponse" message="tns:IService_AddFilm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFilm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateFilm" message="tns:IService_UpdateFilm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateFilmResponse" message="tns:IService_UpdateFilm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFilm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteFilm" message="tns:IService_DeleteFilm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteFilmResponse" message="tns:IService_DeleteFilm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectGenres">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SelectGenres" message="tns:IService_SelectGenres_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/SelectGenresResponse" message="tns:IService_SelectGenres_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectFilmsByGenreId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SelectFilmsByGenreId" message="tns:IService_SelectFilmsByGenreId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/SelectFilmsByGenreIdResponse" message="tns:IService_SelectFilmsByGenreId_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SelectFilms">
+      <soap:operation soapAction="http://tempuri.org/IService/SelectFilms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFilm">
+      <soap:operation soapAction="http://tempuri.org/IService/AddFilm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFilm">
+      <soap:operation soapAction="http://tempuri.org/IService/UpdateFilm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFilm">
+      <soap:operation soapAction="http://tempuri.org/IService/DeleteFilm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectGenres">
+      <soap:operation soapAction="http://tempuri.org/IService/SelectGenres" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectFilmsByGenreId">
+      <soap:operation soapAction="http://tempuri.org/IService/SelectFilmsByGenreId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="BasicHttpBinding_IService" binding="tns:BasicHttpBinding_IService">
+      <soap:address location="http://localhost:2903/Host" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

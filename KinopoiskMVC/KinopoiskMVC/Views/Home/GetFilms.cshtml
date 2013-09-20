@@ -1,0 +1,16 @@
+﻿@model IList<KinopoiskMVC.FilmsServiceReference.Film>
+           
+@{
+    Layout = null;
+}
+           
+@foreach (var film in Model)
+{
+    <tr>
+        <td>@film.Title</td>
+        <td>@film.OriginalTitile</td>
+        <td>@film.Year</td>
+    </tr>
+    
+}
+

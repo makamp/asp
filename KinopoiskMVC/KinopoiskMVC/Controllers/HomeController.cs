@@ -1,5 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using KinopoiskMVC.FilmsServiceReference;
 using KinopoiskMVC.Models;
 using KinopoiskMVC.Models.ViewModels;
@@ -18,8 +25,47 @@ namespace KinopoiskMVC.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Welcome to ASP.NET MVC!";
+            ViewBag.AllGenres = _filmModels.GetAllGenres();
+            ViewBag.GenreId = 0;
 
-            return View(_filmModels.GetAllFilms());
+            return View(new FilterParams());
+        }
+
+        [HttpPost]
+        public ActionResult Index(int genreId)
+        {
+            ViewBag.Message = "Welcome to ASP.NET MVC!";
+            ViewBag.AllGenres = _filmModels.GetAllGenres().Select(p => p.GenreID).ToArray();
+            ViewBag.GenreId = genreId;
+            return View();
+        }
+
+        public ActionResult FilterFilms(FilterParams filterParams)
+        {
+            var films = _filmModels.GetAllFilms().ToList();
+
+            if (filterParams.YearFrom.HasValue)
+            {
+                films = films.Where(p => p.Year >= filterParams.YearFrom).ToList();
+            }
+            if (filterParams.YearTo.HasValue)
+            {
+                films = films.Where(p => p.Year <= filterParams.YearTo).ToList();
+            }
+            if (!string.IsNullOrEmpty(filterParams.SearchString) && filterParams.SearchString!="null")
+            {
+                films = films.Where(p => p.Title.StartsWith(filterParams.SearchString)).ToList();
+            }
+
+            var filmsInfo = films.Select(film => new FilmInfo
+                {
+                    Title = film.Title, 
+                    OriginalTitle = film.OriginalTitile, 
+                    Year = film.Year
+                }).ToList();
+
+
+            return Json(new ListResult { Data = filmsInfo });
         }
 
         public ActionResult About()
@@ -88,4 +134,9 @@ namespace KinopoiskMVC.Controllers
             return RedirectToAction("Index");
         }
     }
+
+    public class ListResult
+        {
+        public IEnumerable<FilmInfo> Data { get; set; }
+        }
 }

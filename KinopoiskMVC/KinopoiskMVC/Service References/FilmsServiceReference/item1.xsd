@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/DAL" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DAL" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:2903/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfFilm">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Film" nillable="true" type="tns:Film" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFilm" nillable="true" type="tns:ArrayOfFilm" />
+  <xs:complexType name="Film">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Actors" nillable="true" type="tns:ArrayOfActor" />
+      <xs:element minOccurs="0" name="FilmID" type="xs:int" />
+      <xs:element minOccurs="0" name="Genres" nillable="true" type="tns:ArrayOfGenre" />
+      <xs:element minOccurs="0" name="OriginalTitile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Year" type="xs:int" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Film" nillable="true" type="tns:Film" />
+  <xs:complexType name="ArrayOfActor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Actor" nillable="true" type="tns:Actor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfActor" nillable="true" type="tns:ArrayOfActor" />
+  <xs:complexType name="Actor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActorID" type="xs:int" />
+      <xs:element minOccurs="0" name="Films" nillable="true" type="tns:ArrayOfFilm" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Actor" nillable="true" type="tns:Actor" />
+  <xs:complexType name="ArrayOfGenre">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Genre" nillable="true" type="tns:Genre" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGenre" nillable="true" type="tns:ArrayOfGenre" />
+  <xs:complexType name="Genre">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Films" nillable="true" type="tns:ArrayOfFilm" />
+      <xs:element minOccurs="0" name="GenreID" type="xs:int" />
+      <xs:element minOccurs="0" name="OriginalTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Genre" nillable="true" type="tns:Genre" />
+</xs:schema>

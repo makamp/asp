@@ -1,0 +1,1 @@
+WCFService.Host.exe /d
